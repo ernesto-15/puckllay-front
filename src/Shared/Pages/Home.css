@@ -1,0 +1,12 @@
+.home-container {
+  height: 90vh;
+}
+
+.landing-logo {
+  /* position: absolute; */
+  top: 10vh;
+  width: 100%;
+  height: 90vh;
+  background-position: center;
+  background-size: cover;
+}
