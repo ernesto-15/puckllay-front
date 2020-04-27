@@ -10,7 +10,7 @@ const NavLinks = props => {
       <NavLink to="/" exact>INICIO</NavLink>
     </li>
     <li>
-      <NavLink to="/about" exact>ACERCA DE NOSOTROS</NavLink>
+      <NavLink to="/about" exact>NOSOTROS</NavLink>
     </li>
     <li>
       <NavLink to="/news">NOTICIAS</NavLink>
@@ -20,6 +20,9 @@ const NavLinks = props => {
     </li>
     <li>
       <NavLink to="/projects">PROYECTOS</NavLink>
+    </li>
+    <li>
+      <NavLink to="/joinus">ÚNETE</NavLink>
     </li>
     <li>
       <NavLink to="/login">INGRESAR</NavLink>

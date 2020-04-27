@@ -1,15 +1,18 @@
 .login {
   padding: 20px;
   background-color: rgba(25, 41, 61, 0.5);
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-card {
-  padding: 25px;
+  padding: 2rem;
   max-width: 30rem;
-  margin: 6.5rem auto;
   background: #192942;
   color: white;
-  border-radius: 10%;
+  border-radius: 35px;
 }
 
 .login-title {
@@ -22,6 +25,7 @@
 
 .form {
   text-align: center;
+  width: 100%;
 }
 
 .form__label {
@@ -60,4 +64,10 @@
 
 .form__button:hover {
   background: rgba(95, 62, 141, 0.8);
+}
+
+@media (min-width: 950px) {
+  .login-card {
+    padding: 3rem;
+  }
 }
