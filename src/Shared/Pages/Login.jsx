@@ -1,41 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../Components/UIElements/Card';
 import './Login.css';
-// import Input from '../Components/FormElements/Input'
 
 const Login = () => {
-  const handleClick = (e) => {
-    e.preventDefault()
+  const [formValue, setFormValue] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValue);
   };
+
+  const handleChange = (e) => {
+    setFormValue({
+      ...formValue,
+      [e.target.name]: e.target.value
+    })
+  }
 
   return (
     <div className="login">
-      <Card className='login-card'>
+      <Card className="login-card">
         <h2 className="login-title">INCIAR SESIÓN</h2>
-        <form className="form">
+        <form onSubmit={handleSubmit} className="form">
           <label className="form__label" htmlFor="email">
             Email
-          </label>{' '}
+          </label>
           <br />
           <input
             className="form__input name"
             type="email"
             name="email"
-            id="name"
+            placeholder="Ingrese su email"
+            value={formValue.email}
+            onChange={handleChange}
           />
           <br />
           <label className="form__label" htmlFor="password">
             Contraseña
-          </label>{' '}
+          </label>
           <br />
           <input
             className="form__input email"
             type="password"
             name="password"
-            id="password"
+            placeholder="Ingrese su contraseña"
+            value={formValue.password}
+            onChange={handleChange}
           />
           <br />
-          <button onClick={handleClick} className="form__button" type="submit">
+          <button className="form__button" type="submit">
             Ingresar
           </button>
         </form>
