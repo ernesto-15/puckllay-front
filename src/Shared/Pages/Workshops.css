@@ -1,0 +1,12 @@
+.workshops-container {
+  padding: 30px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 950px) {
+  .workshops-container {
+    padding: 30px;
+  }
+}
