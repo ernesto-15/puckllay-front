@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './UIElements/Card';
+import LoginModal from './LoginModal';
 import './Workshop.css';
 
+const workshop = {
+  title: 'TALLER 1',
+  descrition1: 'En este momento',
+  descrition2: 'A tu propio ritmo',
+};
+
 const Workshop = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="workshop-container">
       <Card className="workshop-card">
@@ -13,9 +30,11 @@ const Workshop = () => {
         />
         <div className="workshop__info">
           <p>Pukllay</p>
-          <h2>Taller de ierda djaslkdjsak</h2>
-          <p>En este momento</p>
-          <p>A tu propio ritmo</p>
+          <h2>{workshop.title}</h2>
+          <p>{workshop.descrition1}</p>
+          <p>{workshop.descrition1}</p>
+          <button onClick={openModal}>Ingresar</button>
+          <LoginModal workshopData={workshop} isOpen={isOpen} onClose={closeModal} />
         </div>
       </Card>
     </div>

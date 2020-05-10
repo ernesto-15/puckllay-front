@@ -37,12 +37,27 @@
   font-size: 1rem;
 }
 
-.workshop__info p, h2 {
+.workshop__info p,
+h2 {
   margin: 0;
 }
 
 .workshop__info p {
   align-self: flex-start;
+}
+
+.workshop__info button {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  border: none;
+  background-color: #192942;
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  outline: none;
+  padding: 10px;
+  font-size: 0.9em;
+  font-weight: bold;
 }
 
 @media (min-width: 500px) {
@@ -56,4 +71,3 @@
     max-width: 20%;
   }
 }
-
