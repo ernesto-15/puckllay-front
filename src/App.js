@@ -20,10 +20,13 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/login" exact>
+          <Route path="/ingresar" exact>
             <Login />
           </Route>
-          <Route path="/workshops" exact>
+          <Route path="/admin/ingresar" exact>
+            <Login />
+          </Route>
+          <Route path="/talleres" exact>
             <Workshops />
           </Route>
           <Redirect to="/" />
