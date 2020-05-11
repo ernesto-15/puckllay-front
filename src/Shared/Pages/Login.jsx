@@ -1,24 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../Components/UIElements/Card';
 import './Login.css';
 
-const Login = () => {
+const Login = (props) => {
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formValue);
-  };
+  const [loading, setLoading] = useState(false)
+  
+  const [error, setError] = useState(null)
+
+  const [token, setToken] = useState(null)
 
   const handleChange = (e) => {
     setFormValue({
       ...formValue,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+    console.log(formValue.email);
+  };
+
+  const login = async () => {
+    const resp = await fetch('https://puckllay-back.herokuapp.com/login', {
+      method: 'POST',
+      body: {
+        email: formValue.email,
+        password: formValue.password,
+      },
+    });
+    const {ok, data} = await resp.json();
+    if(!ok) {
+      setError(data.message)
+    } else {
+      setToken(data.token)
+      return token
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login();
+    if(token) {
+      props.history.push('/mis-talleres');
+    }
+  };
+
+  useEffect(() => {}, []);
 
   return (
     <div className="login">
@@ -51,6 +80,7 @@ const Login = () => {
             onChange={handleChange}
           />
           <br />
+          {error && <h3 className="error-message">{error}</h3>}
           <button className="form__button" type="submit">
             Ingresar
           </button>
