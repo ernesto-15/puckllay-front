@@ -66,6 +66,10 @@
   background: rgba(95, 62, 141, 0.8);
 }
 
+.error-message {
+  margin: 0;
+}
+
 @media (min-width: 950px) {
   .login-card {
     padding: 3rem;

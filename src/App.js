@@ -29,6 +29,9 @@ function App() {
           <Route path="/talleres" exact>
             <Workshops />
           </Route>
+          <Route path="/mis-talleres" exact>
+            <Workshops />
+          </Route>
           <Redirect to="/" />
         </Switch>
       </main>
