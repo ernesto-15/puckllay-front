@@ -8,41 +8,41 @@ const Login = (props) => {
     password: '',
   });
 
-  const [loading, setLoading] = useState(false)
-  
-  const [error, setError] = useState(null)
-
-  const [token, setToken] = useState(null)
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormValue({
       ...formValue,
       [e.target.name]: e.target.value,
     });
-    console.log(formValue.email);
   };
 
   const login = async () => {
+    const { email, password } = formValue;
+    console.log(typeof email, password);
     const resp = await fetch('https://puckllay-back.herokuapp.com/login', {
       method: 'POST',
-      body: {
-        email: formValue.email,
-        password: formValue.password,
+      mode: 'cors',
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
       },
     });
-    const {ok, data} = await resp.json();
-    if(!ok) {
-      setError(data.message)
+    const { ok, data } = await resp.json();
+    if (!ok) {
+      setError(data.message);
     } else {
-      setToken(data.token)
-      return token
+      localStorage.setItem('token', data.token)
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login();
-    if(token) {
+    await login();
+    if(localStorage.getItem('token')) {
       props.history.push('/mis-talleres');
     }
   };

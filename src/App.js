@@ -17,21 +17,11 @@ function App() {
       <MainNavigation />
       <main>
         <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/ingresar" exact>
-            <Login />
-          </Route>
-          <Route path="/admin/ingresar" exact>
-            <Login />
-          </Route>
-          <Route path="/talleres" exact>
-            <Workshops />
-          </Route>
-          <Route path="/mis-talleres" exact>
-            <Workshops />
-          </Route>
+          <Route path="/" exact component={Home} />
+          <Route path="/ingresar" exact component={Login} />
+          <Route path="/admin/ingresar" exact component={Login} />
+          <Route path="/talleres" exact component={Workshops} />
+          <Route path="/mis-talleres" exact component={Workshops} />
           <Redirect to="/" />
         </Switch>
       </main>
