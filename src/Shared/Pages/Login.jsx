@@ -46,8 +46,8 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await login()
-    props.onLogin(true)
     if (localStorage.getItem('token')) {
+      props.onLogin(true)
       props.history.replace('/mis-talleres')
     }
   }
@@ -61,7 +61,7 @@ const Login = (props) => {
         <form onSubmit={handleSubmit} className='form'>
           <label className='form__label' htmlFor='email'>
 						Email
-     </label>
+          </label>
           <br />
           <input
             className='form__input name'
@@ -74,7 +74,7 @@ const Login = (props) => {
           <br />
           <label className='form__label' htmlFor='password'>
 						Contraseña
-     </label>
+          </label>
           <br />
           <input
             className='form__input email'
@@ -88,7 +88,7 @@ const Login = (props) => {
           {error && <h3 className='error-message'>{error}</h3>}
           <button className='form__button' type='submit'>
 						Ingresar
-     </button>
+          </button>
         </form>
       </Card>
     </div>
