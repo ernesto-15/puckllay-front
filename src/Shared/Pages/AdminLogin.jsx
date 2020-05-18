@@ -20,7 +20,7 @@ const Login = (props) => {
   const login = async () => {
     const { email, password } = formValue;
     console.log(email, password);
-    const resp = await fetch('https://puckllay-back.herokuapp.com/login/teacher', {
+    const resp = await fetch('https://puckllay-back.herokuapp.com/login/admin', {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify({

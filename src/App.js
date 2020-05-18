@@ -8,6 +8,7 @@ import {
 import MainNavigation from './Shared/Components/Navbar/MainNavigation';
 import Home from './Shared/Pages/Home'
 import Login from './Shared/Pages/Login'
+import AdminLogin from './Shared/Pages/AdminLogin'
 import Workshops from './Shared/Pages/Workshops'
 import './App.css';
 
@@ -19,7 +20,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/ingresar" exact component={Login} />
-          <Route path="/admin/ingresar" exact component={Login} />
+          <Route path="/admin/ingresar" exact component={AdminLogin} />
           <Route path="/talleres" exact component={Workshops} />
           <Route path="/mis-talleres" exact component={Workshops} />
           <Redirect to="/" />
