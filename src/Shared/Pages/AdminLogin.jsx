@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../Context/authContext';
+import React, { useState, useContext } from 'react';
+import {AuthContext} from '../Context/authContext'
 import Card from '../Components/UIElements/Card';
 import './Login.css';
 
@@ -23,7 +23,7 @@ const Login = (props) => {
   const login = async () => {
     const { email, password } = formValue;
     console.log(email, password);
-    const resp = await fetch('https://puckllay-back.herokuapp.com/login/teacher', {
+    const resp = await fetch('https://puckllay-back.herokuapp.com/login/admin', {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify({
@@ -50,8 +50,6 @@ const Login = (props) => {
       window.location.replace('/mis-talleres')
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="login">
