@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../Context/authContext';
 import Card from '../Components/UIElements/Card';
 import './Login.css';
 
 const Login = (props) => {
+  // eslint-disable-next-line
+  const [token, setToken] = useContext(AuthContext);
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
@@ -36,6 +39,7 @@ const Login = (props) => {
       setError(data.message);
     } else {
       localStorage.setItem('token', data.token)
+      setToken(data.token)
     }
   };
 
@@ -43,7 +47,7 @@ const Login = (props) => {
     e.preventDefault();
     await login();
     if(localStorage.getItem('token')) {
-      props.history.push('/mis-talleres');
+      window.location.replace('/mis-talleres')
     }
   };
 
