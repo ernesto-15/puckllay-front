@@ -8,7 +8,6 @@ import {
 import PrivateRoute from './Shared/Components/PrivateRoute';
 import PrivateUserRoute from './Shared/Components/PrivateUserRoute';
 import MainNavigation from './Shared/Components/Navbar/MainNavigation';
-// import AdminNavigation from './Shared/Components/Navbar/AdminNavigation';
 import Home from './Shared/Pages/Home';
 import Login from './Shared/Pages/Login';
 import AdminLogin from './Shared/Pages/AdminLogin';
@@ -39,7 +38,6 @@ function App() {
     );
     setIsUserValidated(resp.ok);
     return resp.ok;
-    // validate(resp.ok);
   };
 
   const validateToken = async (token) => {
@@ -55,7 +53,6 @@ function App() {
     );
     setIsValidated(resp.ok);
     return resp.ok;
-    // validate(resp.ok);
   };
 
   const setTokens = (data, logout) => {
@@ -107,27 +104,13 @@ function App() {
           <Route path="/talleres" exact component={Workshops} />
           <Route path="/ingresar" exact component={Login} />
           <Route path="/admin/ingresar" exact component={AdminLogin} />
-          <PrivateRoute exact path="/dashboard" component={Admin} />
+          <PrivateRoute exact path="/talleres" component={Admin} />
+          <PrivateRoute exact path="/usuarios" component={Admin} />
           <PrivateUserRoute exact path="/mis-talleres" component={User} />
           <Redirect to="/" />
         </Switch>
       </Router>
     </AuthAdminContext.Provider>
-    // <AuthProvider>
-    //   <Router>
-    //     <MainNavigation onLogout={handleToken} />
-    //     <main>
-    //       {token && routesLogin}
-    //       {!token && routesGuess}
-    //     </main>
-    //   </Router>
-    //   <AuthAdminContext.Provider value={{ adminToken, setTokens, isValidated }}>
-    //     <Router>
-    //       <AdminNavigation />
-    //       {adminRoutes}
-    //     </Router>
-    //   </AuthAdminContext.Provider>
-    // </AuthProvider>
   );
 }
 
