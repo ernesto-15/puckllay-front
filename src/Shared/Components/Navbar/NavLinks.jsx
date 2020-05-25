@@ -1,54 +1,94 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../../Context/authContext'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { AuthAdminContext } from '../../Context/adminAuthContext';
+import { NavLink } from 'react-router-dom';
 
-import './NavLinks.css'
+import './NavLinks.css';
 
-const NavLinks = (props) => {
-  const [token, setToken] = useContext(AuthContext)
+const NavLinks = () => {
+  const { isValidated, isUserValidated, setUserTokens, setTokens } = useContext(
+    AuthAdminContext
+  );
 
   const logout = () => {
-    localStorage.removeItem('token')
-    setToken(null)
-	props.onLogout(false)
-  }
+    setUserTokens(null, true);
+    setTokens(null, true);
+  };
 
   return (
-    <ul className='nav-links'>
-      <li>
-        <NavLink to='/' exact>
-					INICIO
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to='/about' exact>
-					NOSOTROS
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to='/news'>NOTICIAS</NavLink>
-      </li>
-      <li>
-        <NavLink to={`${token ? '/mis-talleres' : 'talleres'}`}>TALLERES</NavLink>
-      </li>
-      <li>
-        <NavLink to='/projects'>PROYECTOS</NavLink>
-      </li>
-      <li>
-        <NavLink to='/joinus'>ÚNETE</NavLink>
-      </li>
-      {!token && (
+    <ul className="nav-links">
+      {!isValidated && (
         <li>
-          <NavLink to='/ingresar'>INGRESAR</NavLink>
+          <NavLink to="/" exact>
+            INICIO
+          </NavLink>
         </li>
       )}
-      {token && (
+
+      {!isValidated && (
         <li>
-          <NavLink onClick={logout} to='/'>CERRAR SESION</NavLink>
+          <NavLink to="/about" exact>
+            NOSOTROS
+          </NavLink>
+        </li>
+      )}
+
+      {!isValidated && (
+        <li>
+          <NavLink to="/news" exact>
+            NOTICIAS
+          </NavLink>
+        </li>
+      )}
+
+      {!isValidated && (
+        <li>
+          <NavLink to={isUserValidated ? '/mis-talleres' : '/talleres'} exact>
+            {isUserValidated ? 'MIS TALLERES' : 'TALLERES'}
+          </NavLink>
+        </li>
+      )}
+
+      {!isValidated && (
+        <li>
+          <NavLink to="/projects" exact>
+            PROYECTOS
+          </NavLink>
+        </li>
+      )}
+
+      {!isValidated && (
+        <li>
+          <NavLink to="/joinus" exact>
+            ÚNETE
+          </NavLink>
+        </li>
+      )}
+
+      {isValidated && (
+        <li>
+          <NavLink to="/crear" exact>
+            CREAR
+          </NavLink>
+        </li>
+      )}
+
+      {!isValidated && !isUserValidated && (
+        <li>
+          <NavLink to="/ingresar" exact>
+            INGRESAR
+          </NavLink>
+        </li>
+      )}
+
+      {(isValidated || isUserValidated) && (
+        <li>
+          <NavLink onClick={logout} to="/">
+            CERRAR SESION
+          </NavLink>
         </li>
       )}
     </ul>
-  )
-}
+  );
+};
 
-export default NavLinks
+export default NavLinks;

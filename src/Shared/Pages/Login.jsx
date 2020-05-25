@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { AuthContext } from '../Context/authContext'
+import React, { useState, useContext } from 'react'
+import { AuthAdminContext } from '../Context/adminAuthContext';
 import Card from '../Components/UIElements/Card'
+import { Redirect } from 'react-router-dom';
 import './Login.css'
 
-const Login = (props) => {
-  // eslint-disable-next-line
-	const [token, setToken] = useContext(AuthContext);
+const Login = () => {
+	const { setUserTokens, isUserValidated } = useContext(AuthAdminContext);
   const [formValue, setFormValue] = useState({
     email: '',
     password: ''
@@ -38,21 +38,18 @@ const Login = (props) => {
     if (!ok) {
       setError(data.message)
     } else {
-      localStorage.setItem('token', data.token)
-      setToken(data.token)
+      setUserTokens(data.token, false)
     }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     await login()
-    if (localStorage.getItem('token')) {
-      props.onLogin(true)
-      props.history.replace('/mis-talleres')
-    }
   }
 
-  useEffect(() => { }, [])
+  if (isUserValidated) {
+    return <Redirect to="/mis-talleres" />;
+  }
 
   return (
     <div className='login'>

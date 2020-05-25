@@ -1,16 +1,15 @@
 import React, { useState, useContext } from 'react';
-import {AuthContext} from '../Context/authContext'
+import { AuthAdminContext } from '../Context/adminAuthContext';
 import Card from '../Components/UIElements/Card';
 import './Login.css';
+import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
-  // eslint-disable-next-line
-  const [token, setToken] = useContext(AuthContext);
+  const { setTokens, isValidated } = useContext(AuthAdminContext);
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
   });
-
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -23,37 +22,40 @@ const Login = (props) => {
   const login = async () => {
     const { email, password } = formValue;
     console.log(email, password);
-    const resp = await fetch('https://puckllay-back.herokuapp.com/login/admin', {
-      method: 'POST',
-      mode: 'cors',
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const resp = await fetch(
+      'https://puckllay-back.herokuapp.com/login/admin',
+      {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     const { ok, data } = await resp.json();
     if (!ok) {
       setError(data.message);
     } else {
-      localStorage.setItem('token', data.token)
-      setToken(data.token)
+      setTokens(data.token, false);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login();
-    if(localStorage.getItem('token')) {
-      window.location.replace('/mis-talleres')
-    }
   };
 
+  if (isValidated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <div className="login">
       <Card className="login-card">
+        <p>ADMINISTRADOR</p>
         <h2 className="login-title">INCIAR SESIÓN</h2>
         <form onSubmit={handleSubmit} className="form">
           <label className="form__label" htmlFor="email">
