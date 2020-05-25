@@ -89,7 +89,7 @@ const NavLinks = () => {
       )}
 
       {(isValidated || isUserValidated) && (
-        <li>
+        <li className="logout-button">
           <NavLink onClick={logout} to="/">
             CERRAR SESION
           </NavLink>

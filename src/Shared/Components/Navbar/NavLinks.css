@@ -18,7 +18,7 @@
   border: 1px solid transparent;
   color: #ffffff;
   font-weight: bolder;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-decoration: none;
   padding: 12px 5px 5px 5px;
   display: inline-block;
@@ -86,4 +86,9 @@
     background: #667eea;
     color: #292929;
   } */
+}
+
+.logout-button a {
+  color: white !important;
+  background-color: #2da4c6 !important; 
 }
