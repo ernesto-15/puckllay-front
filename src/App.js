@@ -11,7 +11,8 @@ import MainNavigation from './Shared/Components/Navbar/MainNavigation';
 import Home from './Shared/Pages/Home';
 import Login from './Shared/Pages/Login';
 import AdminLogin from './Shared/Pages/AdminLogin';
-import Admin from './Shared/Pages/Admin';
+import AdminUsers from './Shared/Pages/AdminUsers';
+import AdminWorkshops from './Shared/Pages/AdminWorkshops';
 import User from './Shared/Pages/User';
 import Workshops from './Shared/Pages/Workshops';
 import { AuthAdminContext } from './Shared/Context/adminAuthContext';
@@ -104,8 +105,8 @@ function App() {
           <Route path="/talleres" exact component={Workshops} />
           <Route path="/ingresar" exact component={Login} />
           <Route path="/admin/ingresar" exact component={AdminLogin} />
-          <PrivateRoute exact path="/talleres" component={Admin} />
-          <PrivateRoute exact path="/usuarios" component={Admin} />
+          <PrivateRoute exact path="/admin/talleres" component={AdminWorkshops} />
+          <PrivateRoute exact path="/admin/usuarios" component={AdminUsers} />
           <PrivateUserRoute exact path="/mis-talleres" component={User} />
           <Redirect to="/" />
         </Switch>

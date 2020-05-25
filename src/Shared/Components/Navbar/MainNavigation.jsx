@@ -32,7 +32,7 @@ const MainNavigation = (props) => {
         </button>
         <h1 className='main-navigation__title'>
           <Link to='/'>
-            <img className='logo' src='../../../../js.png' alt='' />
+            <img className='logo' src='../../../../pukllay-logo.png' alt='' />
             <h1 className='logo-title'>Pukllay</h1>
           </Link>
         </h1>

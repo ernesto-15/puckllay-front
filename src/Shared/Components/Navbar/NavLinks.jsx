@@ -66,7 +66,7 @@ const NavLinks = () => {
 
       {isValidated && (
         <li>
-          <NavLink to="/usuarios" exact>
+          <NavLink to="/admin/usuarios" exact>
             USUARIOS 
           </NavLink>
         </li>
@@ -74,7 +74,7 @@ const NavLinks = () => {
 
       {isValidated && (
         <li>
-          <NavLink to="/talleres" exact>
+          <NavLink to="/admin/talleres" exact>
             TALLERES
           </NavLink>
         </li>

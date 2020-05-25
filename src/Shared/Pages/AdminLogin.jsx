@@ -50,12 +50,12 @@ const Login = (props) => {
   };
 
   if (isValidated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/admin/usuarios" />;
   }
   return (
     <div className="login">
       <Card className="login-card">
-        <p>ADMINISTRADOR</p>
+        <p className="login-admin">ADMINISTRADOR</p>
         <h2 className="login-title">INCIAR SESIÓN</h2>
         <form onSubmit={handleSubmit} className="form">
           <label className="form__label" htmlFor="email">

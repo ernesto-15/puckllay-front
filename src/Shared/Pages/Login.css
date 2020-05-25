@@ -15,6 +15,12 @@
   border-radius: 35px;
 }
 
+.login-admin {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
 .login-title {
   font-size: 2.8rem;
   margin: 0;
@@ -60,6 +66,7 @@
   border-radius: 15px;
   outline: none;
   transition: background 0.3s;
+  font-family: 'Baloo Bhaina 2', Arial, Helvetica, sans-serif;
 }
 
 .form__button:hover {

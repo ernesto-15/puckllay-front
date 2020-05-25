@@ -32,8 +32,8 @@
 .nav-links a:hover,
 .nav-links a:active,
 .nav-links a.active {
-  background: rgba(255, 255, 255, 0.91);
-  color: #292929;
+  background: #5f3e97;
+  color: white;
   border-radius: 10px;
   transition: background .666s ease;
 }

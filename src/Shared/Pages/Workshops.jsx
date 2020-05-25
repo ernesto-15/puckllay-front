@@ -4,7 +4,7 @@ import './Workshops.css';
 
 const Workshops = () => {
   return (
-    <div>
+    <>
       <div className="input-container">
         <p>Buscar: </p>
         <input type="text" className="form__input" placeholder="Buscar Taller" />
@@ -19,7 +19,7 @@ const Workshops = () => {
         <Workshop />
         <Workshop />
       </div>
-    </div>
+    </>
   );
 };
 
